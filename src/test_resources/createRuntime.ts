@@ -127,7 +127,7 @@ export async function createRuntime({
   }
 
   const runtime = new AgentRuntime({
-    serverUrl: "https://api.openai.com/v1",
+    serverUrl: "https://api.red-pill.ai/v1",
     conversationLength,
     token: env!.OPENAI_API_KEY!,
     actions: actions ?? [],

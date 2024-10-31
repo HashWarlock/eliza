@@ -184,7 +184,7 @@ const summarizeAction = {
       template: runtime.trimTokens(
         summarizationTemplate,
         chunkSize + 500,
-        "gpt-4o-mini",
+        "gpt-4o",
       ),
     });
 

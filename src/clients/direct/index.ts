@@ -109,7 +109,7 @@ this.app.post("/:agentId/whisper", upload.single('file'), async (req: CustomRequ
       let agentId = req.params.agentId;
       const roomId = stringToUuid(req.body.roomId ?? ("default-room-" + agentId));
       const userId = stringToUuid(req.body.userId ?? "user");
-      
+
       let agent = this.agents.get(agentId);
 
       // if agent is null, look for agent with the same name
@@ -173,7 +173,7 @@ this.app.post("/:agentId/whisper", upload.single('file'), async (req: CustomRequ
 
       const response = await agent.messageCompletion({
         context,
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         stop: [],
       });
 

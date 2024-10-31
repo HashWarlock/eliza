@@ -94,7 +94,7 @@ async function startAgent(character: Character) {
     databaseAdapter: db,
     token:
       token,
-    serverUrl: "https://api.openai.com/v1",
+    serverUrl: "https://api.red-pill.ai/v1",
     model: "gpt-4o",
     evaluators: [],
     character,
@@ -114,8 +114,8 @@ async function startAgent(character: Character) {
     token:
       character.settings?.secrets?.OPENAI_API_KEY ??
       (settings.OPENAI_API_KEY as string),
-    serverUrl: "https://api.openai.com/v1",
-    model: "gpt-4o-mini",
+    serverUrl: "https://api.red-pill.ai/v1",
+    model: "gpt-4o",
     evaluators: [],
     character,
     providers: [timeProvider, boredomProvider],
@@ -131,27 +131,27 @@ async function startAgent(character: Character) {
 
   async function startTelegram(runtime: IAgentRuntime, character: Character) {
     console.log("🔍 Attempting to start Telegram bot...");
-    
+
     const botToken =
       character.settings?.secrets?.TELEGRAM_BOT_TOKEN ??
       settings.TELEGRAM_BOT_TOKEN;
-  
+
     if (!botToken) {
       console.error(
         `❌ Telegram bot token is not set for character ${character.name}.`
       );
       return null;
     }
-  
+
     console.log("✅ Bot token found, initializing Telegram client...");
-  
+
     try {
       console.log("Creating new TelegramClient instance...");
       const telegramClient = new TelegramClient(runtime, botToken);
-      
+
       console.log("Calling start() on TelegramClient...");
       await telegramClient.start();
-      
+
       console.log(`✅ Telegram client successfully started for character ${character.name}`);
       return telegramClient;
     } catch (error) {
@@ -169,7 +169,7 @@ async function startAgent(character: Character) {
    await wait();
    console.log("Starting generation client");
    const twitterGenerationClient = new TwitterGenerationClient(runtime);
-  
+
    return {
      twitterInteractionClient,
      twitterSearchClient,

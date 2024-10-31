@@ -247,7 +247,7 @@ const summarizeAction = {
       formattedMemories,
       chunkSize,
       0,
-      "gpt-4o-mini",
+      "gpt-4o",
     );
 
     console.log("chunks ", chunks.length);
@@ -267,7 +267,7 @@ const summarizeAction = {
         template: runtime.trimTokens(
           summarizationTemplate,
           chunkSize + 500,
-          "gpt-4o-mini",
+          "gpt-4o",
         ),
       });
 

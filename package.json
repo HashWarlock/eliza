@@ -158,7 +158,7 @@
     "sharp": "^0.33.5"
   },
   "optionalDependencies": {
-    "sharp": "0.33.5",
+    "sharp": "^0.33.5",
     "sqlite-vss-darwin-arm64": "0.1.2",
     "sqlite-vss-darwin-x64": "0.1.2",
     "sqlite-vss-linux-arm64": "^0.1.2",

@@ -65,20 +65,28 @@ export default {
     let attachments = [];
     for (let triesLeft = 3; triesLeft > 0; triesLeft--) {
       try {
-        const response = await anthropic.messages.create({
-          model: "claude-3-5-sonnet-20240620",
-          max_tokens: 8192,
-          temperature: 0,
-          messages: [
-            {
-              role: "user",
-              content: context,
-            },
-          ],
-          tools: [],
+        const response = await fetch("https://api.red-pill.ai/v1/chat/completions",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${runtime.getSetting("OPENAI_API_KEY")}`,
+          },
+          body: JSON.stringify({
+            model: "claude-3-5-sonnet-20241022",
+            max_tokens: 4096,
+            temperature: 0,
+            messages: [
+              {
+                role: "user",
+                content: context,
+              },
+            ],
+            tools: [],
+          })
         });
+        const responseData = await response.json();
 
-        responseContent = (response.content[0] as any).text;
+        responseContent = (responseData.error) ? responseData.error : responseData.choices[0].message.content;
 
         // Store Claude's response as an attachment
         const attachmentId =

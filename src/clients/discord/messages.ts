@@ -638,12 +638,12 @@ export class MessageManager {
     const response = await this.runtime.messageCompletion({
       context,
       stop: ["<|eot_id|>","<|eom_id|>"],
-        serverUrl: this.runtime.getSetting("X_SERVER_URL") ?? this.runtime.serverUrl,
-        token: this.runtime.getSetting("XAI_API_KEY") ?? this.runtime.token,
-        model: this.runtime.getSetting("XAI_MODEL") ? this.runtime.getSetting("XAI_MODEL") : "gpt-4o-mini",
-        temperature: 0.5,
-        frequency_penalty: 1.1,
-        // presence_penalty: 1.2,
+      serverUrl: this.runtime.getSetting("X_SERVER_URL") ?? this.runtime.serverUrl,
+      token: this.runtime.getSetting("XAI_API_KEY") ?? this.runtime.token,
+      model: this.runtime.getSetting("XAI_MODEL") ? this.runtime.getSetting("XAI_MODEL") : "gpt-4o-mini",
+      temperature: 0.5,
+      frequency_penalty: 1.1,
+      // presence_penalty: 1.2,
     });
 
     if (!response) {

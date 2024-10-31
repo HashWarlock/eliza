@@ -22,7 +22,7 @@ describe("buildConversationThread", () => {
     runtime = new AgentRuntime({
       databaseAdapter: new SqliteDatabaseAdapter(new Database(":memory:")),
       token: settings.OPENAI_API_KEY as string,
-      serverUrl: "https://api.openai.com/v1",
+      serverUrl: "https://api.red-pill.ai/v1",
       evaluators: [],
       character: defaultCharacter,
       providers: [],

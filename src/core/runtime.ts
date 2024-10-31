@@ -414,7 +414,7 @@ export class AgentRuntime implements IAgentRuntime {
     token = this.token,
     serverUrl = this.serverUrl,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<string> {
 
     let retryLength = 1000; // exponential backoff
@@ -423,7 +423,7 @@ export class AgentRuntime implements IAgentRuntime {
         context = await this.trimTokens(
           context,
           max_context_length,
-          "gpt-4o-mini",
+          "gpt-4o",
         );
         if (!this.getSetting("OPENAI_API_KEY")) {
           console.log("queueing text completion");
@@ -564,7 +564,7 @@ export class AgentRuntime implements IAgentRuntime {
     temperature = 0.3,
     serverUrl = this.serverUrl,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<"RESPOND" | "IGNORE" | "STOP" | null> {
     let retryDelay = 1000;
 
@@ -636,7 +636,7 @@ export class AgentRuntime implements IAgentRuntime {
     serverUrl = this.serverUrl,
     token = this.token,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<boolean> {
     let retryDelay = 1000;
 
@@ -678,7 +678,7 @@ export class AgentRuntime implements IAgentRuntime {
     serverUrl = this.serverUrl,
     token = this.token,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<string[]> {
     let retryDelay = 1000;
 
@@ -720,7 +720,7 @@ export class AgentRuntime implements IAgentRuntime {
     serverUrl = this.serverUrl,
     token = this.token,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<any[]> {
     let retryDelay = 1000;
 
@@ -774,10 +774,10 @@ export class AgentRuntime implements IAgentRuntime {
     serverUrl = this.serverUrl,
     token = this.token,
     max_context_length = this.getSetting("OPENAI_API_KEY") ? 127000 : 8000,
-    max_response_length = this.getSetting("OPENAI_API_KEY") ? 8192 : 4096,
+    max_response_length = this.getSetting("OPENAI_API_KEY") ? 4096 : 4096, //8192 : 4096
   }): Promise<Content> {
     console.log("messageCompletion serverUrl is", serverUrl)
-    context = this.trimTokens(context, max_context_length, "gpt-4o-mini");
+    context = this.trimTokens(context, max_context_length, "gpt-4o");
     let retryLength = 1000; // exponential backoff
     while (true) {
       try {
