@@ -49,6 +49,7 @@ env:
   TEE_MODE: ${{ vars.TEE_MODE || secrets.TEE_MODE || 'PRODUCTION' }}
   WALLET_SECRET_SALT: ${{ vars.WALLET_SECRET_SALT || secrets.WALLET_SECRET_SALT }}
   TEE_VENDOR: ${{ vars.TEE_VENDOR || secrets.TEE_VENDOR || 'phala' }}
+
 jobs:
   build-and-push:
     permissions:
