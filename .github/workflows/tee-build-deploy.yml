@@ -74,11 +74,11 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ${{ env.DOCKER_IMAGE }}:latest
-            ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+            ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
+            ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ github.sha }}
       - name: Set Docker Image Full Name
         run: |
-          export DOCKER_IMAGE_FULL_NAME=${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          export DOCKER_IMAGE_FULL_NAME=${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
       - name: Install Phala Cloud CLI
         run: sudo apt-get update && sudo apt-get install -y nodejs && sudo npm install -g bun
@@ -91,7 +91,7 @@ jobs:
 
       - name: Update Docker Compose
         run: |
-          sed -i "s|\${DOCKER_IMAGE}|${DOCKER_IMAGE_FULL_NAME}|g" ./tee-docker-compose.yaml
+          sed -i "s|\${DOCKER_IMAGE}|${DOCKER_USERNAME}/${DOCKER_IMAGE}:${}|g" ./tee-docker-compose.yaml
 
       - name: Deploy to Phala Cloud
         run: |
